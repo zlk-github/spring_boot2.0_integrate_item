@@ -11,12 +11,21 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class MqApplicationTests {
 
+
     @Autowired
     private Sender sender;
 
     @Test
     public void testSender() {
-        sender.send();
+            try {
+                for (int i = 1; i <= 5; i++) {
+                    Thread.sleep(100);
+                    sender.send(i);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
     }
 
 }
