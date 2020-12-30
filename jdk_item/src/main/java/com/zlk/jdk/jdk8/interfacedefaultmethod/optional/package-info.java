@@ -9,6 +9,7 @@ Optional 不是函数是接口，这是个用来防止NullPointerException异常
     *orElse(T other):如果存在该值，返回值， 否则返回 other。
     *orElseGet(Supplier<? extends T> other):如果存在该值，返回值， 否则触发 other，并返回 other 调用的结果。
     *orElseThrow(Supplier<? extends X> exceptionSupplier):如果存在该值，返回包含的值，否则抛出由 Supplier 继承的异常
+    *filter(Predicate<? super T> predicate)：为辅助的筛选条件，针对如size()==0等
 
     of(T t):将类转为Optional 对象(入参不能为null，否则会报空指针异常)
     get():如果在这个Optional中包含这个值，返回值，否则抛出异常：NoSuchElementException

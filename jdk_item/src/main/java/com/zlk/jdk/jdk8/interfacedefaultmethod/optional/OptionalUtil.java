@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.function.Function;
 
 /**
- * @Description: Optional
+ * @Description: Optional 主要作用判null
  * @Author: ZhouLiKuan
  * @Date: 2020/12/17 16:20
  */
@@ -46,6 +46,18 @@ public class OptionalUtil {
 
         //Optional.ofNullable(t).ifPresent(OptionalUtil::accept);
     }
+
+    /**
+     * filter为辅助的筛选条件
+     * @param arrayList
+     * @param <T>
+     */
+    public static<T> void filter(ArrayList arrayList){
+        Optional.ofNullable(arrayList).filter(f->f.size()>0).ifPresent(s->{
+            System.out.println("size>0");
+        });
+    }
+
 
     /**
      * 如果存在值则返回自己，不存在返回其他（可以是方法调用结果）。（相当于if-else）只对null为其他
