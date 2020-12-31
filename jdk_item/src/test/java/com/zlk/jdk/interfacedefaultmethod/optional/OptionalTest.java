@@ -120,4 +120,21 @@ public class OptionalTest {
         System.out.println(OptionalUtil.orElse(list));//null
 
     }
+
+    @Test
+    public void testFilter(){
+        System.out.println("----------Optional.orElse(t)-----------");
+        ArrayList<String> list = new ArrayList<>();
+        OptionalUtil.filter(list);//无输出，判断size()>0生效
+
+        list = new ArrayList<>();
+        list.add("测试");
+        OptionalUtil.filter(list);//size>0
+
+        list = null;
+        //null时
+       OptionalUtil.filter(list);//无输出，判断null生效
+
+    }
+
 }
