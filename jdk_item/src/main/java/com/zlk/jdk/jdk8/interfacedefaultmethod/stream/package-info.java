@@ -20,10 +20,10 @@ Stream（串行）接口中包含许多对流操作的方法，这些方法分�
         *limit()：截取流中前面几个元素
         *collect()：对流的汇总操作，比如输出成List集合
         *toArray()：将流转换为数组
+        *reduce()：对流中的元素归约操作，将每个元素合起来形成一个新的值
+        *anyMatch()：匹配流中的元素（匹配上任意一个返回true），类似的操作还有allMatch()匹配所有和noneMatch()匹配一个方法.
         distinct()：去除流中重复的元素(只能针对整个实体的hashcode,作用不大)
         skip()：跳过流中前面几个元素
-        reduce()：对流中的元素归约操作，将每个元素合起来形成一个新的值
-        anyMatch()：匹配流中的元素，类似的操作还有allMatch()和noneMatch()方法
         findFirst()：查找第一个元素，类似的还有findAny()方法
         max()：求最大值
         min()：求最小值

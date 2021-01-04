@@ -29,6 +29,82 @@ public class StreamUtil {
         return count;
     }
 
+    /**
+     * 结果转换（常见需要处理结果，或者PO转VO等）
+     * @param list
+     * @param <T>
+     * @return
+     */
+    public static<T>  List<String> mapOrCollect(List<String> list){
+        List<String> list2 = list.stream().map(f->{
+            String str = f +"-修改";
+            return str;
+        }).collect(Collectors.toList());
+        list2.forEach(System.out::println);
+
+        return list2;
+    }
+
+    /**
+     * 转数组
+     * @param list
+     * @param <T>
+     * @return
+     */
+    public static<T>  Object[]  toArray(List<User> list){
+        Object[] array = list.stream().toArray();
+        return array;
+    }
+
+    /**
+     * 跳过前面几个
+     * @param list
+     * @param <T>
+     * @return
+     */
+    public static<T>  void  skip(List<User> list){
+        //跳过前面两个
+        list.stream().skip(2).forEach(System.out::println);
+    }
+
+    /**
+     * 合并返回单个值，一般用于计算
+     * @param <T>
+     */
+    public static<T>  void  reduce(){
+        int[] nums = {1,2,3,10};
+        //累加
+        int sum = Arrays.stream(nums).reduce(0, (a, b) -> a + b);
+        System.out.println(sum);
+    }
+
+    /**
+     *  判断是否包含，满足返回true
+     * @param list
+     * @param <T>
+     */
+    public static<T>  boolean  anyMatch(List<User> list){
+       // anyMatch：判断的条件里，任意一个元素成功，返回true
+       // allMatch：判断条件里的元素，所有的都是，返回true
+       // noneMatch：与allMatch相反，判断条件里的元素，所有的都不是，返回true
+        boolean match = list.stream().anyMatch(f -> f.getAge() == 25);
+        return match;
+    }
+
+    /**
+     *  第一个
+     * @param list
+     * @param <T>
+     */
+    public static<T>  User  findFirst(List<User> list){
+        //返回满足条件第一个
+        User user1 =list.stream().filter(b->"小张".equals(b.getName())).findFirst().orElse(null);
+        //找到任意匹配返回，一般配合filter与orElse使用
+        User user =list.stream().filter(b->"小张".equals(b.getName())).findAny().orElse(null);
+        return user1;
+    }
+
+
 
     /**
      * max_min
@@ -57,22 +133,6 @@ public class StreamUtil {
             }
         }).get();
         System.out.println("min:"+min);
-    }
-
-    /**
-     * 结果转换（常见需要处理结果，或者PO转VO等）
-     * @param list
-     * @param <T>
-     * @return
-     */
-    public static<T>  List<String> map(List<String> list){
-        List<String> list2 = list.stream().map(f->{
-            String str = f +"-修改";
-            return str;
-        }).collect(Collectors.toList());
-        list2.forEach(System.out::println);
-
-        return list2;
     }
 
     /**
@@ -173,7 +233,15 @@ public class StreamUtil {
         //distinct(userList).forEach(System.out::println);
         //forEach(userList);
         //sorted(userList);
-        limit(userList).forEach(System.out::println);
+        //limit(userList).forEach(System.out::println);
+        //Object[] objects = toArray(userList);
+       // Arrays.stream(objects).forEach(System.out::println);
+        //skip(userList);
+       // reduce();
+        //boolean match = anyMatch(userList);
+       // System.out.println("args = " + match);//args = true
+        findFirst(userList);
+
     }
 
 }
