@@ -10,7 +10,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 /**
- * @Description: 预定义线程池(核心线程与最大线程相等)
+ * @Description: FixedThreadPool(核心线程与最大线程相等)
  * @Author: ZhouLiKuan
  * @Date: 2021/01/19
  */
@@ -18,7 +18,7 @@ public class FixedThreadPoolTest {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
-        ExecutorService executorService = Executors.newFixedThreadPool(6);
+        ExecutorService executorService = Executors.newFixedThreadPool(1);
         for (int i = 0; i < 5; i++) {
             //execute无结果返回
            // executorService.execute(new MyTask());
